@@ -1,0 +1,37 @@
+:root {
+  --main-bg-color: black;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: black;
+}
+
+.limits {
+  max-width: 800px;
+  background-color: darkslategrey;
+  height: 100vh;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.drawing--window {
+  width: 60vw;
+  height: 60vw;
+  background-color: rgb(117, 65, 65);
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.manipulation--window {
+  width: 25vw;
+  height: 60vw;
+  background-color: cornflowerblue;
+}
