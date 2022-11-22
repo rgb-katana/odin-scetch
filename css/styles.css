@@ -146,3 +146,11 @@ button:hover {
     margin: 10px;
   }
 }
+
+.pressed {
+  background-color: blueviolet !important;
+}
+
+.black {
+  background-color: black !important;
+}
