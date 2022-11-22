@@ -110,7 +110,11 @@ button:hover {
 }
 
 .color-row {
-  height: 40%;
+  height: 30%;
+}
+
+.color-name:hover {
+  background-color: beige !important;
 }
 
 .colors {
@@ -126,8 +130,4 @@ button:hover {
 .color {
   flex-grow: 1;
   border: none !important;
-}
-
-.color-row {
-  margin-bottom: 15%;
 }
