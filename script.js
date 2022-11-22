@@ -8,6 +8,7 @@ const clearBtn = document.querySelector('.clear--button');
 const blackBtn = document.querySelector('.black--button');
 const rainbowBtn = document.querySelector('.rainbow--button');
 const allButtons = document.querySelectorAll('.buttons');
+let allSquares;
 
 let sizeChoice = 16;
 let currentColor = 'black';
@@ -42,10 +43,6 @@ function resizeSquares(diseredSize) {
   });
 }
 
-drawingWindow.addEventListener('mouseover', function (e) {
-  e.target.style.backgroundColor = `${currentColor}`;
-});
-
 window.addEventListener('resize', function () {
   resizeSquares(sizeChoice);
 });
@@ -70,6 +67,7 @@ colors.addEventListener('mouseout', function (e) {
 
 changeSqrBtn.addEventListener('click', function (e) {
   e.preventDefault();
+  if (isNaN(document.getElementById('change-squares').value)) return;
   sizeChoice = document.getElementById('change-squares').value;
   document.getElementById('change-squares').value = '';
   updateSquaresSize(sizeChoice);
@@ -98,6 +96,7 @@ eraserBtn.addEventListener('click', function (e) {
   e.target.classList.add('pressed');
   currentColor = 'white';
   colorNamer.classList = [];
+  colorNamer.classList.add('white');
   colorNamer.innerText = 'white';
   colorNamer.style.color = 'black';
   colorNamer.style.textShadow = `1px 1px 2px black`;
@@ -122,4 +121,29 @@ blackBtn.addEventListener('click', function (e) {
   colorNamer.classList.add('black');
   colorNamer.innerText = 'black';
   colorNamer.style.color = 'white';
+});
+
+colorNamer.parentElement.addEventListener(
+  'mouseover',
+  (e) => colorNamer.parentElement.style
+);
+
+let isMouseDown = false;
+
+drawingWindow.addEventListener('mousedown', (e) => {
+  e.target.style.backgroundColor = `${currentColor}`;
+  isMouseDown = true;
+});
+drawingWindow.addEventListener('mouseup', (e) => {
+  e.target.style.backgroundColor = `${currentColor}`;
+  isMouseDown = false;
+});
+
+drawingWindow.addEventListener(
+  'click',
+  (e) => (e.target.style.backgroundColor = `${currentColor}`)
+);
+
+drawingWindow.addEventListener('mouseover', function (e) {
+  if (isMouseDown) e.target.style.backgroundColor = `${currentColor}`;
 });

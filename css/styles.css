@@ -48,6 +48,7 @@ label {
   justify-content: center;
   align-items: center;
   padding: 2% 0% 1% 0%;
+  font-size: 1.3rem;
 }
 
 .manipulation--window > div {
@@ -82,10 +83,10 @@ button:hover {
   margin-bottom: 10%;
 }
 
-.form-row div {
+.form-row > div {
   background-color: beige;
   margin: 0 auto;
-  border: 1px solid black;
+  box-shadow: 5px 5px 5px black;
 }
 
 .form-row div:hover {
@@ -133,18 +134,12 @@ button:hover {
 
 .color-name {
   height: 20%;
+  min-height: 24px;
 }
 
 .color {
   flex-grow: 1;
   border: none !important;
-}
-
-@media only screen and (max-width: 700px) {
-  .limits {
-    flex-direction: column;
-    margin: 10px;
-  }
 }
 
 .pressed {
@@ -153,4 +148,25 @@ button:hover {
 
 .black {
   background-color: black !important;
+}
+
+.white {
+  background-color: white !important;
+}
+
+@media only screen and (max-width: 700px) {
+  .drawing--window {
+    width: 70vw;
+    height: 70vw;
+  }
+  .manipulation--window {
+    width: 30vw;
+  }
+  .limits {
+    flex-direction: column;
+    margin: 10px;
+  }
+  .color-row {
+    margin-bottom: 50%;
+  }
 }
