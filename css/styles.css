@@ -10,6 +10,7 @@
 
 body {
   background-color: black;
+  font-family: 'Patrick Hand';
 }
 
 .limits {
@@ -34,4 +35,99 @@ body {
   width: 25vw;
   height: 60vw;
   background-color: cornflowerblue;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2% 0% 1% 0%;
+}
+
+.manipulation--window > div {
+  text-align: center;
+  width: 80%;
+}
+
+.manipulation--window label,
+input {
+  text-align: center;
+  width: 80%;
+}
+
+button {
+  margin-top: 5%;
+  font-family: 'Patrick Hand';
+  padding: 2%;
+}
+
+button:hover {
+  background-color: blueviolet;
+}
+
+.form-row:first-of-type {
+  flex-grow: 2;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-row {
+  margin-bottom: 10%;
+}
+
+.form-row div {
+  background-color: beige;
+  margin: 0 auto;
+  border: 1px solid black;
+}
+
+.form-row div:hover {
+  background-color: blueviolet;
+}
+
+.hansa-yellow {
+  background-color: rgb(233, 214, 107) !important;
+}
+
+.quinacridone-gold {
+  background-color: rgb(230, 130, 70) !important;
+}
+
+.carmine {
+  background-color: rgb(150, 0, 24) !important;
+}
+
+.ultramarine {
+  background-color: rgb(65, 102, 245) !important;
+}
+
+.phthalo-green {
+  background-color: rgb(18, 53, 36) !important;
+}
+
+.burnt-sienna {
+  background-color: rgb(226, 74, 29) !important;
+}
+
+.color-row {
+  height: 40%;
+}
+
+.colors {
+  height: 80%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.color-name {
+  height: 20%;
+}
+
+.color {
+  flex-grow: 1;
+  border: none !important;
+}
+
+.color-row {
+  margin-bottom: 15%;
 }

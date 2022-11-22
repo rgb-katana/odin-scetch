@@ -4,6 +4,10 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="css/styles.css" />
     <script defer src="./script.js"></script>
     <title>odin-scetch</title>
@@ -11,7 +15,41 @@
   <body>
     <div class="limits">
       <div class="drawing--window"></div>
-      <div class="manipulation--window"></div>
+      <div class="manipulation--window">
+        <div class="form-row">
+          <form action="" method="get" class="squares--form">
+            <label for="full-name">Side size:</label>
+            <input
+              id="full-name"
+              name="full-name"
+              type="number"
+              min="1"
+              max="100"
+            />
+            <button>Submit</button>
+          </form>
+        </div>
+        <div class="form-row color-row">
+          <div class="colors">
+            <div class="color hansa-yellow"></div>
+            <div class="color quinacridone-gold"></div>
+            <div class="color carmine"></div>
+            <div class="color ultramarine"></div>
+            <div class="color phthalo-green"></div>
+            <div class="color burnt-sienna"></div>
+          </div>
+          <div class="color-name"></div>
+        </div>
+        <div class="form-row">
+          <div class="eraser--button">Eraser</div>
+        </div>
+        <div class="form-row">
+          <div class="eraser--button">Clear all</div>
+        </div>
+        <div class="form-row">
+          <div class="eraser--button">Rainbow</div>
+        </div>
+      </div>
     </div>
   </body>
 </html>
