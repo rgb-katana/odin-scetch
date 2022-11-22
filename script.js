@@ -15,6 +15,7 @@ let currentColor = 'black';
 let isColorSelected = false;
 colorNamer.innerText = 'black';
 colorNamer.style.color = 'white';
+isColorSelected = true;
 colorNamer.classList = [];
 colorNamer.classList.add('black');
 
@@ -94,6 +95,7 @@ eraserBtn.addEventListener('click', function (e) {
     btn.classList.remove('pressed');
   });
   e.target.classList.add('pressed');
+  isColorSelected = true;
   currentColor = 'white';
   colorNamer.classList = [];
   colorNamer.classList.add('white');
@@ -121,6 +123,7 @@ blackBtn.addEventListener('click', function (e) {
   colorNamer.classList.add('black');
   colorNamer.innerText = 'black';
   colorNamer.style.color = 'white';
+  isColorSelected = true;
 });
 
 colorNamer.parentElement.addEventListener(
