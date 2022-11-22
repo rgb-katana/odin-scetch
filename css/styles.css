@@ -9,13 +9,13 @@
 }
 
 body {
-  background-color: black;
+  background-color: darkslateblue;
   font-family: 'Patrick Hand';
 }
 
 .limits {
-  max-width: 800px;
-  background-color: darkslategrey;
+  max-width: 1000px;
+  /* background-color: darkslategrey; */
   height: 100vh;
   margin: 0 auto;
   display: flex;
@@ -24,6 +24,8 @@ body {
 }
 
 .drawing--window {
+  max-width: 700px;
+  max-height: 700px;
   width: 60vw;
   height: 60vw;
   background-color: rgb(117, 65, 65);
@@ -34,7 +36,7 @@ body {
 .manipulation--window {
   width: 25vw;
   height: 60vw;
-  background-color: cornflowerblue;
+  /* background-color: cornflowerblue; */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -64,7 +66,6 @@ button:hover {
 }
 
 .form-row:first-of-type {
-  flex-grow: 2;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -110,6 +111,7 @@ button:hover {
 }
 
 .color-row {
+  max-height: 210px;
   height: 30%;
 }
 
