@@ -1,3 +1,6 @@
+'use strict';
+
+// Selections
 const drawingWindow = document.querySelector('.drawing--window');
 const manipulationWindow = document.querySelector('.manipulation--window');
 const colors = document.querySelector('.colors');
@@ -10,9 +13,11 @@ const rainbowBtn = document.querySelector('.rainbow--button');
 const allButtons = document.querySelectorAll('.buttons');
 let allSquares;
 
+// Variables
 let sizeChoice = 16;
 let currentColor = 'black';
 let isColorSelected = false;
+let isRainbowOn = false;
 colorNamer.innerText = 'black';
 colorNamer.style.color = 'white';
 isColorSelected = true;
@@ -23,7 +28,7 @@ updateSquaresSize(sizeChoice);
 
 function updateSquaresSize(diseredSize) {
   drawingWindow.innerHTML = '';
-  sqrsPixels = drawingWindow.getBoundingClientRect().width / diseredSize;
+  let sqrsPixels = drawingWindow.getBoundingClientRect().width / diseredSize;
   for (let i = 0; i < diseredSize ** 2; i++) {
     const square = document.createElement('div');
     square.classList.add(`square`);
@@ -38,7 +43,7 @@ function updateSquaresSize(diseredSize) {
 function resizeSquares(diseredSize) {
   const allSquares = document.querySelectorAll(`.square`);
   allSquares.forEach((square) => {
-    sqrsPixels = drawingWindow.getBoundingClientRect().width / diseredSize;
+    let sqrsPixels = drawingWindow.getBoundingClientRect().width / diseredSize;
     square.style.width = `${sqrsPixels}px`;
     square.style.height = `${sqrsPixels}px`;
   });
@@ -76,7 +81,6 @@ changeSqrBtn.addEventListener('click', function (e) {
 
 colors.addEventListener('click', function (e) {
   if (e.target.classList.contains('color')) {
-    console.log(e.target.dataset.clr);
     currentColor = e.target.dataset.clr;
     colorNamer.classList = [];
     colorNamer.innerText = e.target.classList[1];
@@ -87,6 +91,7 @@ colors.addEventListener('click', function (e) {
     allButtons.forEach(function (btn) {
       btn.classList.remove('pressed');
     });
+    isRainbowOn = false;
   }
 });
 
@@ -102,12 +107,10 @@ eraserBtn.addEventListener('click', function (e) {
   colorNamer.innerText = 'white';
   colorNamer.style.color = 'black';
   colorNamer.style.textShadow = `1px 1px 2px black`;
+  isRainbowOn = false;
 });
 
 clearBtn.addEventListener('click', function (e) {
-  allButtons.forEach(function (btn) {
-    btn.classList.remove('pressed');
-  });
   e.target.classList.add('pressed');
   updateSquaresSize(sizeChoice);
   setTimeout(() => e.target.classList.remove('pressed'), 100);
@@ -124,6 +127,21 @@ blackBtn.addEventListener('click', function (e) {
   colorNamer.innerText = 'black';
   colorNamer.style.color = 'white';
   isColorSelected = true;
+  isRainbowOn = false;
+});
+
+rainbowBtn.addEventListener('click', function (e) {
+  allButtons.forEach(function (btn) {
+    btn.classList.remove('pressed');
+  });
+  e.target.classList.add('pressed');
+  currentColor = 'rainbow';
+  colorNamer.classList = [];
+  colorNamer.classList.add('rainbow');
+  colorNamer.innerText = 'rainbow';
+  colorNamer.style.color = 'white';
+  isColorSelected = true;
+  isRainbowOn = true;
 });
 
 colorNamer.parentElement.addEventListener(
@@ -133,20 +151,60 @@ colorNamer.parentElement.addEventListener(
 
 let isMouseDown = false;
 
+const rainbowList = [
+  'rgba(255, 0, 0, 1',
+  'rgba(255, 154, 0, 1)',
+  'rgba(208, 222, 33, 1)',
+  'rgba(79, 220, 74, 1)',
+  'rgba(63, 218, 216, 1)',
+  'rgba(28, 127, 238, 1)',
+  'rgba(95, 21, 242, 1)',
+  'rgba(186, 12, 248, 1)',
+  'rgba(251, 7, 217, 1)',
+];
+
+function chooseRainbow() {
+  let randomRainbow = Math.trunc(Math.random() * rainbowList.length);
+  return rainbowList[randomRainbow];
+}
+
 drawingWindow.addEventListener('mousedown', (e) => {
-  e.target.style.backgroundColor = `${currentColor}`;
+  if (isMouseDown) {
+    if (isRainbowOn) {
+      e.target.style.backgroundColor = chooseRainbow();
+    } else {
+      e.target.style.backgroundColor = `${currentColor}`;
+    }
+  }
   isMouseDown = true;
 });
 drawingWindow.addEventListener('mouseup', (e) => {
-  e.target.style.backgroundColor = `${currentColor}`;
+  if (isMouseDown) {
+    if (isRainbowOn) {
+      e.target.style.backgroundColor = chooseRainbow();
+    } else {
+      e.target.style.backgroundColor = `${currentColor}`;
+    }
+  }
   isMouseDown = false;
 });
 
-drawingWindow.addEventListener(
-  'click',
-  (e) => (e.target.style.backgroundColor = `${currentColor}`)
-);
+drawingWindow.addEventListener('click', (e) => {
+  if (isMouseDown) {
+    if (isRainbowOn) {
+      e.target.style.backgroundColor = chooseRainbow();
+    } else {
+      e.target.style.backgroundColor = `${currentColor}`;
+    }
+  }
+});
 
 drawingWindow.addEventListener('mouseover', function (e) {
-  if (isMouseDown) e.target.style.backgroundColor = `${currentColor}`;
+  if (isMouseDown) {
+    if (isRainbowOn) {
+      e.target.style.backgroundColor = chooseRainbow();
+    } else {
+      e.target.style.backgroundColor = `${currentColor}`;
+    }
+  }
 });
